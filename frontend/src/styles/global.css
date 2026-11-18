@@ -1,0 +1,7 @@
+:root {
+  --bg-color: #1a0b2e; /* Fundo escuro arroxeado */
+  --card-bg: #2d144b; /* Fundo dos cards */
+  --text-primary: #ffffff;
+  --text-secondary: #b8a6c9;
+  --accent-color: #d4af37; /* Dourado ou algum tom de azul/ciano */
+}
