@@ -1,0 +1,29 @@
+.pagina { text-align: left; min-height: calc(100vh - 64px); padding: 38px clamp(18px, 5vw, 64px) 60px; color: #fff; background: #1a0b2e; }
+.hero { display: flex; justify-content: space-between; align-items: end; gap: 24px; max-width: 1300px; margin: 0 auto 30px; }
+.eyebrow { margin: 0 0 10px; color: #d4af37; font-size: .75rem; font-weight: 800; letter-spacing: .18em; }
+.hero h1 { margin: 0; color: #fff; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -.04em; }
+.subtitulo { max-width: 650px; margin-top: 10px; color: #b8a6c9; font-size: .98rem; }
+.linksModalidade { display: flex; gap: 8px; padding: 5px; border: 1px solid #4b3065; border-radius: 12px; background: #251139; }
+.linksModalidade a { padding: 9px 15px; border-radius: 8px; color: #cbbbd9; text-decoration: none; font-size: .9rem; }
+.linksModalidade a.ativo { color: #21132e; background: #d4af37; font-weight: 800; }
+.filtros { display: flex; flex-wrap: wrap; align-items: end; gap: 14px; max-width: 1300px; margin: 0 auto 34px; padding: 18px; border: 1px solid #4a3062; border-radius: 16px; background: #2d144b; }
+.filtros label { display: flex; flex: 1 1 150px; flex-direction: column; gap: 7px; color: #d8cce3; font-size: .78rem; font-weight: 700; }
+.filtros input, .filtros select { width: 100%; min-height: 42px; box-sizing: border-box; padding: 9px 11px; border: 1px solid #62447c; border-radius: 8px; outline: none; color: #fff; background: #211035; font: inherit; font-size: .88rem; }
+.filtros input:focus, .filtros select:focus { border-color: #d4af37; box-shadow: 0 0 0 2px rgba(212,175,55,.15); }
+.filtros select option { background: #211035; }
+.aplicar { min-height: 42px; padding: 0 17px; border: 0; border-radius: 8px; color: #21132e; background: #d4af37; font-weight: 800; cursor: pointer; }
+.resultados { max-width: 1300px; margin: 0 auto; }
+.resultadoCabecalho { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 18px; }
+.resultadoCabecalho h2 { margin: 0; color: #fff; font-size: 1.3rem; font-weight: 750; }
+.resultadoCabecalho span { color: #b8a6c9; font-size: .88rem; }
+.grade { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.mensagem { padding: 35px 0; color: #cbbbd9; text-align: center; }
+.erro { padding: 16px; border: 1px solid #a94d68; border-radius: 10px; color: #ffd9e2; background: rgba(169,77,104,.15); }
+.vazio { padding: 55px 20px; border: 1px dashed #62447c; border-radius: 16px; color: #cbbbd9; text-align: center; }
+.vazio > span { color: #d4af37; font-size: 2.7rem; }
+.vazio h3 { margin: 8px 0; color: #fff; }
+.vazio p { margin: 0 0 18px; }
+.vazio button { padding: 10px 16px; border: 1px solid #d4af37; border-radius: 8px; color: #f7e7aa; background: transparent; cursor: pointer; }
+@media (max-width: 1050px) { .grade { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .hero { align-items: start; flex-direction: column; } .grade { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .pagina { padding-inline: 14px; } .grade { grid-template-columns: 1fr; } .filtros { padding: 13px; } .linksModalidade { width: 100%; } .linksModalidade a { flex: 1; text-align: center; } }

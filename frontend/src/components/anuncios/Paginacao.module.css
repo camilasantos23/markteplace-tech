@@ -1,0 +1,6 @@
+.paginacao { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 30px 0 10px; color: #e9def3; }
+.paginacao button { border: 1px solid #72518f; border-radius: 9px; padding: 10px 16px; color: #fff; background: #3b1c5e; cursor: pointer; }
+.paginacao button:hover:not(:disabled) { border-color: #d4af37; }
+.paginacao button:disabled { opacity: .4; cursor: not-allowed; }
+.paginacao span { font-size: .9rem; }
+@media (max-width: 440px) { .paginacao { gap: 8px; } .paginacao button { padding: 9px 10px; } }
