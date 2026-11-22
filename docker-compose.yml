@@ -35,5 +35,5 @@ services:
       retries: 10
 
 volumes:
-  dados:
+  dados: 
   fotos:

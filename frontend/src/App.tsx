@@ -6,6 +6,8 @@ import { loginThunk, restaurarSessaoThunk, logout } from './store/slices/authSli
 import Perfil from './pages/Perfil';
 import PerfilEditar from './pages/PerfilEditar';
 import PerfilPublico from './pages/PerfilPublico';
+import Vendas from './pages/Vendas';
+import Doacoes from './pages/Doacoes';
 
 function LoginView() {
   const [email, setEmail] = useState('');
@@ -65,6 +67,8 @@ export default function App() {
       {token && (
         <nav style={{ padding: '15px', background: '#f0f0f0', display: 'flex', gap: '15px', alignItems: 'center' }}>
           <strong>Marketplace IFPB</strong>
+          <Link to="/vendas">Vendas</Link>
+          <Link to="/doacoes">Doações</Link>
           <Link to="/perfil">Meu Perfil</Link>
           <button onClick={() => dispatch(logout())} style={{ marginLeft: 'auto', cursor: 'pointer' }}>
             Sair
@@ -74,6 +78,9 @@ export default function App() {
 
       <Routes>
         <Route path="/login" element={<LoginView />} />
+        <Route path="/vendas" element={<RotaProtegida><Vendas /></RotaProtegida>} />
+        <Route path="/doacoes" element={<RotaProtegida><Doacoes /></RotaProtegida>} />
+        <Route path="/" element={<Navigate to={token ? "/vendas" : "/login"} replace />} />
         <Route path="/perfil" element={<RotaProtegida><Perfil /></RotaProtegida>} />
         <Route path="/perfil/editar" element={<RotaProtegida><PerfilEditar /></RotaProtegida>} />
         <Route path="/usuarios/:id" element={<RotaProtegida><PerfilPublico /></RotaProtegida>} />
