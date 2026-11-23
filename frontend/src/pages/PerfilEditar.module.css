@@ -1,0 +1,175 @@
+.container {
+  background-color: #EAF6FF;
+  min-height: 100vh;
+  padding: 40px 20px;
+  font-family: 'Inter', sans-serif;
+  color: #3c1e1e; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.cardFormulario {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 600px;
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid #d0e8f2;
+  box-shadow: 0 8px 24px rgba(60, 30, 30, 0.08);
+}
+
+.titulo {
+  font-size: 2rem;
+  color: #3c1e1e;
+  margin-top: 0;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #bfe3ff;
+  padding-bottom: 15px;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.grupo label {
+  font-size: 1rem;
+  color: #5a3c3c;
+  font-weight: 600;
+}
+
+.grupo input[type="text"],
+.grupo input[type="tel"],
+.grupo select {
+  padding: 12px 16px;
+  background-color: #f8fbfe; 
+  border: 1px solid #bfe3ff;
+  border-radius: 8px;
+  color: #3c1e1e;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.grupo input[type="text"]:focus,
+.grupo input[type="tel"]:focus,
+.grupo select:focus {
+  border-color: #a3d4f5;
+  box-shadow: 0 0 0 3px rgba(191, 227, 255, 0.4);
+}
+
+.grupo input::placeholder {
+  color: #8c7373;
+}
+
+.grupo input[type="file"] {
+  padding: 12px;
+  background-color: #f8fbfe;
+  border: 1px dashed #a3d4f5;
+  border-radius: 8px;
+  color: #5a3c3c;
+  cursor: pointer;
+}
+
+.grupo input[type="file"]::file-selector-button {
+  background-color: #bfe3ff;
+  color: #3c1e1e;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin-right: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.grupo input[type="file"]::file-selector-button:hover {
+  background-color: #a3d4f5;
+}
+
+.previewFoto {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #bfe3ff;
+  margin-top: 10px;
+  align-self: center;
+  box-shadow: 0 4px 12px rgba(60, 30, 30, 0.05);
+}
+
+.botoes {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.btnSalvar {
+  flex: 1;
+  padding: 14px;
+  background-color: #bfe3ff;
+  color: #3c1e1e;
+  font-weight: bold;
+  border: 1px solid #bfe3ff;
+  border-radius: 30px; /* Mesmo padrão arredondado do btnEditar */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.btnSalvar:hover:not(:disabled) {
+  background-color: #a3d4f5;
+  box-shadow: 0 4px 12px rgba(191, 227, 255, 0.5);
+}
+
+.btnSalvar:disabled {
+  background-color: #e0eff7;
+  color: #8c7373;
+  border-color: #e0eff7;
+  cursor: not-allowed;
+}
+
+.btnCancelar {
+  padding: 14px 24px;
+  background-color: transparent;
+  color: #5a3c3c;
+  font-weight: bold;
+  border: 1px solid #d0e8f2;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnCancelar:hover:not(:disabled) {
+  background-color: #f0f8ff;
+  color: #3c1e1e;
+}
+
+.mensagem {
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.msgSucesso {
+  background-color: #e6f4ea;
+  color: #1e7e34;
+  border: 1px solid #b7e1cd;
+}
+
+.msgErro {
+  background-color: #fdecea;
+  color: #a12622;
+  border: 1px solid #f5c6cb;
+}

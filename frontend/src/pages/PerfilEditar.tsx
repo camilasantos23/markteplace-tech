@@ -5,6 +5,7 @@ import { atualizarPerfil, uploadFotoPerfil } from '../api/perfil';
 import { listarCursos } from '../api/auth';
 import { atualizarUsuarioLogado } from '../store/slices/authSlice';
 import type { Curso } from '../types';
+import styles from './PerfilEditar.module.css'; // Importação do CSS Module
 
 interface FormState {
   nome: string;
@@ -111,18 +112,19 @@ export default function PerfilEditar() {
 
     setSalvando(true);
     try {
-     let usuarioAtualizado = await atualizarPerfil({
-  nome: form.nome.trim(),
-  cursoId: Number(form.cursoId), // ⚠️
-  telefone: form.telefone.trim() || undefined,
-});
+      let usuarioAtualizado = await atualizarPerfil({
+        nome: form.nome.trim(),
+        cursoId: Number(form.cursoId),
+        telefone: form.telefone.trim() || undefined,
+      });
+      
       if (foto) {
         usuarioAtualizado = await uploadFotoPerfil(foto);
       }
 
       dispatch(atualizarUsuarioLogado(usuarioAtualizado));
       setMensagem({ tipo: 'ok', texto: 'Perfil atualizado com sucesso!' });
-      setTimeout(() => navigate('/perfil'), 900);
+      setTimeout(() => navigate('/perfil'), 1200);
     } catch (err: any) {
       setMensagem({
         tipo: 'erro',
@@ -133,33 +135,31 @@ export default function PerfilEditar() {
     }
   };
 
-  if (!usuario) return <p>Carregando...</p>;
+  if (!usuario) return <p style={{ textAlign: 'center', marginTop: 50 }}>Carregando...</p>;
 
   return (
-    <div style={{ padding: 20, fontFamily: 'sans-serif', maxWidth: 520 }}>
-      <h1>Editar Perfil</h1>
+    <div className={styles.container}>
+      <h1 className={styles.titulo}>Editar Perfil</h1>
 
       {mensagem && (
-        <p
-          style={{
-            padding: 8,
-            borderRadius: 4,
-            background: mensagem.tipo === 'ok' ? '#e6f4ea' : '#fdecea',
-            color: mensagem.tipo === 'ok' ? '#1e7e34' : '#a12622',
-          }}
-        >
+        <p className={`${styles.mensagem} ${mensagem.tipo === 'ok' ? styles.msgSucesso : styles.msgErro}`}>
           {mensagem.texto}
         </p>
       )}
 
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-        <label style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-          Nome
-          <input type="text" value={form.nome} onChange={handleChange('nome')} required />
-        </label>
+      <form onSubmit={handleSubmit} className={styles.formulario}>
+        <div className={styles.grupo}>
+          <label>Nome Completo</label>
+          <input
+            type="text"
+            value={form.nome}
+            onChange={handleChange('nome')}
+            required
+          />
+        </div>
 
-        <label style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-          Curso
+        <div className={styles.grupo}>
+          <label>Curso</label>
           <select
             value={form.cursoId === '' ? '' : String(form.cursoId)}
             onChange={handleChange('cursoId')}
@@ -175,40 +175,40 @@ export default function PerfilEditar() {
               </option>
             ))}
           </select>
-        </label>
+        </div>
 
-        <label style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-          Telefone / WhatsApp (opcional)
+        <div className={styles.grupo}>
+          <label>Telefone / WhatsApp (opcional)</label>
           <input
             type="tel"
             value={form.telefone}
             onChange={handleChange('telefone')}
             placeholder="(83) 99999-9999"
           />
-        </label>
+        </div>
 
-        <label style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-          Foto de Perfil
+        <div className={styles.grupo}>
+          <label>Foto de Perfil</label>
           <input
             type="file"
             accept="image/*"
             onChange={(e) => setFoto(e.target.files?.[0] ?? null)}
           />
-        </label>
+        </div>
 
         {(fotoPreview || usuario.fotoUrl) && (
           <img
             src={fotoPreview ?? usuario.fotoUrl ?? ''}
             alt="Pré-visualização"
-            style={{ width: 96, height: 96, borderRadius: '50%', objectFit: 'cover', border: '1px solid #ccc' }}
+            className={styles.previewFoto}
           />
         )}
 
-        <div style={{ display: 'flex', gap: 10, marginTop: 8 }}>
-          <button type="submit" disabled={salvando || !alterado}>
+        <div className={styles.botoes}>
+          <button type="submit" className={styles.btnSalvar} disabled={salvando || !alterado}>
             {salvando ? 'Salvando...' : 'Salvar alterações'}
           </button>
-          <button type="button" onClick={() => navigate('/perfil')} disabled={salvando}>
+          <button type="button" className={styles.btnCancelar} onClick={() => navigate('/perfil')} disabled={salvando}>
             Cancelar
           </button>
         </div>
