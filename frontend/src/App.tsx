@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from './store';
 import { loginThunk, restaurarSessaoThunk, logout } from './store/slices/authSlice';
 
+import Cadastro from './pages/Cadastro';
 import Perfil from './pages/Perfil';
 import PerfilEditar from './pages/PerfilEditar';
 import PerfilPublico from './pages/PerfilPublico';
@@ -78,6 +79,7 @@ export default function App() {
 
       <Routes>
         <Route path="/login" element={<LoginView />} />
+        <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/vendas" element={<RotaProtegida><Vendas /></RotaProtegida>} />
         <Route path="/doacoes" element={<RotaProtegida><Doacoes /></RotaProtegida>} />
         <Route path="/" element={<Navigate to={token ? "/vendas" : "/login"} replace />} />
