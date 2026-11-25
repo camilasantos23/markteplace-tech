@@ -1,9 +1,9 @@
 .container {
-  background-color: #EAF6FF; /* Fundo azul bem clarinho */
+  background-color: #f5f7fc; /* Fundo azul bem clarinho */
   min-height: 100vh;
   padding: 40px;
   font-family: 'Inter', sans-serif;
-  color: #3c1e1e; /* Texto principal marrom escuro */
+  color: #1b2943; /* Texto principal marrom escuro */
 }
 
 /* Cabeçalho do Perfil */
@@ -23,27 +23,27 @@
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  border: 3px solid #bfe3ff; /* Borda azul no avatar */
+  border: 3px solid #dce7ff; /* Borda azul no avatar */
   object-fit: cover;
 }
 
 .infoUsuario h2 {
   font-size: 2rem;
   margin: 0 0 10px 0;
-  color: #3c1e1e;
+  color: #1b2943;
 }
 
 .infoUsuario p {
-  color: #5a3c3c; /* Um marrom um pouco mais claro para os detalhes */
+  color: #6c7b92; /* Um marrom um pouco mais claro para os detalhes */
   margin: 5px 0;
   font-size: 1.1rem;
 }
 
 .btnEditar {
   margin-top: 15px;
-  background-color: #bfe3ff;
-  color: #3c1e1e;
-  border: 1px solid #bfe3ff;
+  background-color: #dce7ff;
+  color: #1b2943;
+  border: 1px solid #dce7ff;
   padding: 10px 24px;
   border-radius: 30px;
   font-weight: bold;
@@ -52,16 +52,16 @@
 }
 
 .btnEditar:hover {
-  background-color: #a3d4f5; /* Azul um pouquinho mais escuro no hover */
+  background-color: #2d60e8; /* Azul um pouquinho mais escuro no hover */
   box-shadow: 0 4px 12px rgba(191, 227, 255, 0.5);
 }
 
 /* Seção de Anúncios */
 .tituloSecao {
   font-size: 1.8rem;
-  color: #3c1e1e; /* Mudou para marrom */
+  color: #1b2943; /* Mudou para marrom */
   margin-bottom: 20px;
-  border-bottom: 2px solid #bfe3ff; /* Linha azul embaixo */
+  border-bottom: 2px solid #dce7ff; /* Linha azul embaixo */
   padding-bottom: 10px;
 }
 
@@ -100,12 +100,12 @@
 
 .cardConteudo h3 {
   margin: 0 0 10px 0;
-  color: #3c1e1e; /* Título do anúncio marrom */
+  color: #1b2943; /* Título do anúncio marrom */
   font-size: 1.2rem;
 }
 
 .cardConteudo p {
-  color: #6b4c4c;
+  color: #6c7b92;
   margin: 5px 0;
   font-size: 0.9rem;
 }
@@ -113,7 +113,7 @@
 .preco {
   font-size: 1.3rem;
   font-weight: bold;
-  color: #3c1e1e !important;
+  color: #1b2943 !important;
 }
 
 .badgeEstado {
@@ -121,10 +121,10 @@
   margin-top: 10px;
   padding: 4px 12px;
   border-radius: 20px;
-  background-color: #EAF6FF; /* Fundo do badge azulzinho */
-  color: #3c1e1e;
+  background-color: #f5f7fc; /* Fundo do badge azulzinho */
+  color: #1b2943;
   font-size: 0.8rem;
   font-weight: bold;
   text-transform: uppercase;
-  border: 1px solid #bfe3ff;
+  border: 1px solid #dce7ff;
 }
