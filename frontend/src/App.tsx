@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, Link, useNavigate } from 'react-router-dom';
+import { Routes, Route, Navigate, Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from './store';
 import { loginThunk, restaurarSessaoThunk, logout } from './store/slices/authSlice';
 
@@ -9,6 +9,8 @@ import PerfilEditar from './pages/PerfilEditar';
 import PerfilPublico from './pages/PerfilPublico';
 import Vendas from './pages/Vendas';
 import Doacoes from './pages/Doacoes';
+import Cadastro from './pages/Cadastro';
+import './styles/techmarket.css';
 
 function LoginView() {
   const [email, setEmail] = useState('');
@@ -17,31 +19,24 @@ function LoginView() {
   const dispatch = useAppDispatch();
   const { loading, error, token } = useAppSelector((state) => state.auth);
 
-  useEffect(() => {
-    if (token) navigate('/perfil');
-  }, [token, navigate]);
-
+  useEffect(() => { if (token) navigate('/vendas'); }, [token, navigate]);
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    const resultAction = await dispatch(loginThunk({ email, senha }));
-    if (loginThunk.fulfilled.match(resultAction)) {
-      navigate('/perfil');
-    }
+    const action = await dispatch(loginThunk({ email, senha }));
+    if (loginThunk.fulfilled.match(action)) navigate('/vendas');
   };
-
   return (
-    <div style={{ padding: '20px', fontFamily: 'sans-serif', maxWidth: '350px', margin: '40px auto' }}>
-      <h1>Marketplace IFPB</h1>
-      <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        <h2>Login de Estudante</h2>
-        {error && <p style={{ color: 'red', margin: 0 }}>{error}</p>}
-        <input type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} required style={{ padding: '10px' }} />
-        <input type="password" placeholder="Senha" value={senha} onChange={(e) => setSenha(e.target.value)} required style={{ padding: '10px' }} />
-        <button type="submit" disabled={loading} style={{ padding: '10px', cursor: 'pointer' }}>
-          {loading ? 'Entrando...' : 'Entrar'}
-        </button>
-      </form>
-    </div>
+    <main className="auth-layout">
+      <aside className="auth-brand">
+        <Link className="brand auth-brand-logo" to="/login"><span className="brand-mark">▥</span><span>TechMarket<small>IFPB · Cajazeiras</small></span></Link>
+        <div className="auth-brand-copy"><span className="auth-kicker">FEITO NO IFPB, PARA O IFPB</span><h1>Tecnologia circulando entre quem faz acontecer.</h1><p>Compre, doe e negocie equipamentos com estudantes do seu campus.</p></div>
+        <span className="auth-foot">IFPB Campus Cajazeiras · Projeto acadêmico</span>
+      </aside>
+      <section className="auth-panel"><div className="auth-form-wrap"><span className="form-eyebrow">BEM-VINDO DE VOLTA</span><h2>Entre na sua conta</h2><p className="form-description">Acesse o marketplace da comunidade acadêmica.</p>
+        <form onSubmit={handleLogin} className="auth-form"><label>E-mail institucional<input type="email" placeholder="seu.nome@academico.ifpb.edu.br" value={email} onChange={e => setEmail(e.target.value)} required /></label><label>Senha<input type="password" placeholder="Digite sua senha" value={senha} onChange={e => setSenha(e.target.value)} required /></label>{error && <p className="form-error" role="alert">{error}</p>}<button type="submit" disabled={loading}>{loading ? 'Entrando...' : 'Entrar na plataforma →'}</button></form>
+        <p className="auth-bottom">Novo por aqui? <Link to="/cadastro">Criar uma conta</Link></p>
+      </div></section>
+    </main>
   );
 }
 
@@ -64,17 +59,9 @@ export default function App() {
   }, [dispatch, token, usuario, tentouRestaurar]);
 
   return (
-    <div style={{ fontFamily: 'sans-serif' }}>
+    <div className="app-shell">
       {token && (
-        <nav style={{ padding: '15px', background: '#f0f0f0', display: 'flex', gap: '15px', alignItems: 'center' }}>
-          <strong>Marketplace IFPB</strong>
-          <Link to="/vendas">Vendas</Link>
-          <Link to="/doacoes">Doações</Link>
-          <Link to="/perfil">Meu Perfil</Link>
-          <button onClick={() => dispatch(logout())} style={{ marginLeft: 'auto', cursor: 'pointer' }}>
-            Sair
-          </button>
-        </nav>
+        <header className="site-header"><nav className="site-nav" aria-label="Navegação principal"><Link className="brand" to="/vendas"><span className="brand-mark">▥</span><span>TechMarket<small>IFPB · Cajazeiras</small></span></Link><div className="nav-links"><NavLink to="/vendas" className={({isActive}) => isActive ? 'nav-active' : ''}>Explorar vendas</NavLink><NavLink to="/doacoes" className={({isActive}) => isActive ? 'nav-active' : ''}>Doações</NavLink><NavLink to="/perfil" className={({isActive}) => isActive ? 'nav-active' : ''}>Meu perfil</NavLink></div><button className="logout-button" onClick={() => dispatch(logout())}>Sair</button></nav></header>
       )}
 
       <Routes>
